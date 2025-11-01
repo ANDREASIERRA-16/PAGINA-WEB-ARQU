@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ED Estrategias Documentales - Transformación Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2980b9;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav ul li a:hover {
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Secciones principales */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+        
+        h2 {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .img-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .img-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .img-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .problem-section {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .solution-section {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .question-card h3 i {
+            font-size: 1.2rem;
+        }
+        
+        /* Sección Asistente Virtual */
+        .assistant-section {
+            background: linear-gradient(135deg, #e8f4fc, #d4e6f1);
+            text-align: center;
+        }
+        
+        .assistant-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .assistant-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .assistant-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .creators {
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        .creators strong {
+            color: var(--secondary-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <div>
+                    <div class="logo-text">ED Estrategias Documentales</div>
+                    <div class="tagline">Transformación Digital para el Sector Público</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#empresa"><i class="fas fa-building"></i> Empresa</a></li>
+                    <li><a href="#caso-negocio"><i class="fas fa-briefcase"></i> Caso de Negocio</a></li>
+                    <li><a href="#asistente"><i class="fas fa-robot"></i> Asistente Virtual</a></li>
+                    <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transformación Digital en el Estado Colombiano</h1>
+            <p>Soluciones innovadoras para la modernización de la administración pública a través de la gestión documental y tecnologías de vanguardia.</p>
+            <a href="#caso-negocio" class="btn">Conocer más</a>
+        </div>
+    </section>
+    
+    <main class="container">
+        <!-- Sección Empresa -->
+        <section id="empresa">
+            <h2><i class="fas fa-building"></i> Descripción de la Empresa</h2>
+            <p>ED Estrategias Documentales es una empresa especializada en la gestión documental y transformación digital para el sector público colombiano. Con años de experiencia en el desarrollo de soluciones tecnológicas, asesoramos a instituciones gubernamentales en la implementación de estrategias que optimicen sus procesos, mejoren la eficiencia operativa y garanticen el cumplimiento normativo.</p>
+            
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Equipo de trabajo colaborativo">
+                <div class="img-caption">Nuestro equipo multidisciplinario trabajando en soluciones innovadoras</div>
+            </div>
+            
+            <p>Nuestro equipo multidisciplinario combina conocimientos en gestión documental, tecnologías de la información y administración pública para ofrecer soluciones integrales que respondan a los desafíos actuales de la digitalización en el Estado colombiano.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Optimización de Procesos</h3>
+                    <p>Automatizamos y mejoramos los flujos de trabajo documental para aumentar la eficiencia.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cumplimiento Normativo</h3>
+                    <p>Garantizamos que todas las soluciones cumplan con la normativa vigente en gestión documental.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Análisis de Datos</h3>
+                    <p>Implementamos herramientas para el análisis y aprovechamiento de la información documental.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Caso de Negocio -->
+        <section id="caso-negocio" class="problem-section">
+            <h2><i class="fas fa-briefcase"></i> Caso de Negocio</h2>
+            <h3>Problema Identificado</h3>
+            <p>El principal problema identificado en la empresa Estrategias Documentales radica en la falta de una cultura organizacional sólida orientada hacia la Transformación Digital. Aunque la empresa reconoce la importancia de adaptarse a los cambios tecnológicos, muchos de sus colaboradores aún presentan dudas, desconocimiento y resistencia frente a los nuevos conceptos, herramientas y metodologías que implica este proceso.</p>
+            
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Problemas de comunicación en equipo">
+                <div class="img-caption">Brechas de comunicación y comprensión en equipos de trabajo</div>
+            </div>
+            
+            <p>Esta situación ha generado brechas de comprensión y comunicación interna, lo que dificulta la apropiación de una mentalidad digital unificada. Los empleados no siempre cuentan con un canal claro o confiable para resolver sus inquietudes sobre la Transformación Digital, lo que retrasa la adopción de buenas prácticas y limita la innovación interna.</p>
+            
+            <div class="solution-section">
+                <h3>Solución Propuesta</h3>
+                <p>Ante esta problemática, se plantea la necesidad de contar con un asistente virtual basado en Big Data, diseñado como un solucionador de dudas internas que oriente, acompañe y facilite el aprendizaje de los colaboradores frente a la Transformación Digital.</p>
+                
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Asistente virtual e inteligencia artificial">
+                    <div class="img-caption">Asistente virtual para resolver dudas sobre Transformación Digital</div>
+                </div>
+                
+                <p>Este asistente permitirá centralizar la información, ofrecer respuestas precisas y fortalecer la cultura digital dentro de la empresa, promoviendo así un cambio organizacional sostenible y colaborativo.</p>
+            </div>
+        </section>
+        
+        <!-- Sección Asistente Virtual -->
+        <section id="asistente" class="assistant-section">
+            <h2><i class="fas fa-robot"></i> Asistente Virtual ED</h2>
+            <div class="assistant-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <p>Nuestro asistente virtual está diseñado para resolver todas tus dudas sobre Transformación Digital en el Estado Colombiano. Utiliza inteligencia artificial y big data para ofrecer respuestas precisas y contextualizadas.</p>
+            <p>Puedes preguntarle sobre el Marco de la Transformación Digital, ejes esenciales, gestión documental electrónica, seguridad de la información y cualquier otro tema relacionado con la modernización del sector público.</p>
+            
+            <button class="assistant-btn" onclick="openChatbase()">
+                <i class="fas fa-comments"></i> Hablar con el Asistente
+            </button>
+            
+            <div class="questions-container">
+                <div class="question-card">
+                    <h3><i class="fas fa-question-circle"></i> Pregunta 1</h3>
+                    <p>¿Cuáles son los principales ejes de la Transformación Digital en la administración pública colombiana según el marco establecido?</p>
+                </div>
+                
+                <div class="question-card">
+                    <h3><i class="fas fa-question-circle"></i> Pregunta 2</h3>
+                    <p>¿Qué factores esenciales deben considerarse para una implementación exitosa de la Transformación Digital en las entidades del Estado?</p>
+                </div>
+                
+                <div class="question-card">
+                    <h3><i class="fas fa-question-circle"></i> Pregunta 3</h3>
+                    <p>¿Cómo contribuye la gestión documental electrónica al proceso de Transformación Digital en el sector público colombiano?</p>
+                </div>
+                
+                <div class="question-card">
+                    <h3><i class="fas fa-question-circle"></i> Pregunta 4</h3>
+                    <p>¿Qué papel juega la seguridad de la información en el Marco de Transformación Digital para el Estado Colombiano?</p>
+                </div>
+                
+                <div class="question-card">
+                    <h3><i class="fas fa-question-circle"></i> Pregunta 5</h3>
+                    <p>¿Cuáles son los principales desafíos que enfrenta la administración pública en la implementación de estrategias de Transformación Digital?</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ED Estrategias Documentales</h3>
+                    <p>Especialistas en transformación digital y gestión documental para el sector público colombiano.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#empresa">Nuestra Empresa</a></li>
+                        <li><a href="#caso-negocio">Caso de Negocio</a></li>
+                        <li><a href="#asistente">Asistente Virtual</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Clientes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</li>
+                        <li><i class="fas fa-phone"></i> +57 1 234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@edestrategias.com</li>
+                        <li><i class="fas fa-clock"></i> Lun - Vie: 8:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="creators">
+                <p>Desarrollado por: <strong>Jeiner Andres Castro Peña</strong> y <strong>María Andrea Sierra Sánchez</strong></p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ED Estrategias Documentales - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script del Asistente Virtual Chatbase -->
+    <script>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="nR0Vyf2rsVb7db9d2sXKk";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        
+        // Función para abrir el chatbase
+        function openChatbase() {
+            if (window.chatbase && typeof window.chatbase === 'function') {
+                window.chatbase('open');
+            } else {
+                alert('El asistente virtual se está cargando. Por favor, intente de nuevo en unos segundos.');
+            }
+        }
+        
+        // JavaScript para el menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Ajustar navegación en redimensionamiento
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    nav.style.display = 'block';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
